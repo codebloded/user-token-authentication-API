@@ -8,7 +8,7 @@ const Jwt = require('jsonwebtoken');
 
 router.use(bodyParser.json());
 
-// =========VALIDATION=========
+// =========USER VALIDATION=========
 const JOI = require('@hapi/joi');
 const schema = {
     name:JOI.string().max(12).required(),
@@ -16,12 +16,9 @@ const schema = {
     password: JOI.string().min(8).required()
 }
 
-
-
 //===============+ROUTES===================
 router.get('/', (req,res)=>{
-    res.json({message:"GET request"})
-    
+    res.json({message:"GET Request"})
 })
 
 router.post('/register', async (req, res)=>{
@@ -74,8 +71,5 @@ router.post('/login', async (req,res)=>{
     res.header('auth-token', token).send(token);
     
 })
-
-
-
 
 module.exports = router;
